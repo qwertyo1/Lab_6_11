@@ -5,27 +5,38 @@ void set::addToSet(element value) {
 }
 
 void set::setPlansByDate(int day, int mounth, string plans) {
-
+	int i = 0;
+	for (element a : data) {
+		if ((mounth == a.mounth) && (day == a.day)) {
+			data[i].plans = plans;
+			return;
+		}
+		i++;
+	}
+	element b;
+	b.day = day;
+	b.mounth = mounth;
+	cout << "А какой это будет день недели по счету?\n";
+	cin >> b.dayOfTheWeek;
+	b.plans = plans;
+	addToSet(b);
 }
 
 string set::getPlansByDate(int day, int mounth) {
-	element a = getElemByDate(day, mounth);
-	return a.plans;
+	for (element a : data)
+		if ((mounth == a.mounth) && (day == a.day)) return a.plans;
+	return "В этот день нет планов :)";
 }
-/*
+
+
 void set::printSet() {
-	for (string a : data) {
-		cout << a << " ";
+	cout << " |" << "    Число    " << "|" << "    Месяц    " << "|" << " День недели " << "|" << "    Планы    " << "|" << endl;
+	for (element a : data) {
+		cout << " |" << setw(13) << a.day << "|" << setw(13) << a.mounth << "|" << setw(13) << a.dayOfTheWeek << "|" << setw(13) << a.plans << "|" << endl;
 	}
 	cout << endl;
 }
-*/
 
-set::element set::getElemByDate(int day, int mounth) {
-	for (element a : data)
-		if ((mounth == a.mounth) && (day == a.day)) return a;
-	return;
-}
 
 int set::checkBelongs(int day, int mounth) {
 	for (element a : data)
@@ -33,7 +44,6 @@ int set::checkBelongs(int day, int mounth) {
 	return 0;
 }
 
-/*
 set set::intersectionOfSets(set bSet) {
 	set tempSet;
 	for (element a : data)
@@ -41,7 +51,6 @@ set set::intersectionOfSets(set bSet) {
 			if (a == b) tempSet.addToSet(a);
 	return tempSet;
 }
-*/
 
 set set::mergeOfSets(set bSet) {
 	set tempSet;

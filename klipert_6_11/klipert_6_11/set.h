@@ -13,13 +13,12 @@ protected:
 	};
 	vector<element> data;
 	int size;
-public:
 	void addToSet(element elem);
+	int checkBelongs(int day, int mounth);
+	set intersectionOfSets(set bSet);
+	set mergeOfSets(set bSet);
+public:
 	string getPlansByDate(int day, int mounth);
 	void setPlansByDate(int day, int mounth, string plans);
-	element getElemByDate(int day, int mounth);
-	//void printSet();
-	int checkBelongs(int day, int mounth);
-	//set intersectionOfSets(set bSet);
-	set mergeOfSets(set bSet);
+	void printSet();
 };
