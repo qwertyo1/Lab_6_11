@@ -2,14 +2,9 @@
 
 using namespace std;
 
-class set {
-private:
-	vector<string> data;
-	int size;
+class diary : public set {
 public:
-	void addToSet(string value);
-	void printSet();
-	int checkBelongs(string elem);
-	set intersectionOfSets(set bSet);
-	set mergeOfSets(set bSet);
+	void add(int day, int mounth, int dayOfTheWeek, string plans);
+	//void setPlans(string plans);
+	//string getPlans();
 };
